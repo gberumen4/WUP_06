@@ -36,9 +36,21 @@ $H_0$ There is no significant differences in the data.
 
 $H_A$ There are differences in the data.
 
+```{r eval=FALSE}
+mydata <- mydata %>%
+mutate(across(where(is.character), as.factor))
+```
+
 # Methods
 
-<!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method. Discuss what data manipulations may be needed for example subsetting or other binning procedures and what sort of graphical displays and inferential tools will be used!-->
+<!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method. Discuss what data manipulations may be needed for example subsetting or other binning procedures and what sort of graphical displays and inferential tools will be used!--> 
+
+We are going to use the CandP helper files to compare two catagorical dada types caapun and race, Because this is a cat - car problem we will first create a bar chart, then we will run fav stats to show graphical and numerical results. 
+
+
+For inferential results we are going to run a Chi - Squared test which will tell us if there is a difference in the data but not where. Normally we will use a fisher test to do this but in this we have more than two factors in "race" so we will use the fisherXY function to run fisher tests for all combinations. 
+
+
 
 # Results
 
@@ -50,7 +62,11 @@ $H_A$ There are differences in the data.
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question. Bottom line is to explain the features of the graph that are relevant to conforming or departing to what is expected by your null hypothesis !-->
 
+```{r}
+barchartGC(~race + cappun,data=mydata)
+barchartGC(~race + cappun,data=mydata, type="percent")
 
+```
 
 ## Now with The Most data (fewer variables gives more data points)
 
